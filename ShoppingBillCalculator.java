@@ -1,36 +1,40 @@
 public class ShoppingBillCalculator {
 
-    public double calculateElectronicsGST(double a, double b) {
+    public static double calculateElectronicsGST(double a, double b) {
         double total = a + b;
         return total + (total * 0.18);
     }
 
-    public double calculateFashionGST(double c, double d) {
+    public static double calculateFashionGST(double c, double d) {
         double total = c + d;
         return total + (total * 0.13);
     }
 
-    public double calculateFoodGST(double e) {
+    public static double calculateFoodGST(double e) {
         return e + (e * 0.07);
     }
 
-    public double totalBill(double a, double b, double c, double d, double e) {
+    public static double totalBill(double a, double b, double c, double d, double e) {
         return calculateElectronicsGST(a, b) + calculateFashionGST(c, d) + calculateFoodGST(e);
     }
 
-    public double calculateDiscountedBill(double a, double b, double c, double d, double e) {
+    public static double calculateDiscountedBill(double a, double b, double c, double d, double e) {
         double total = totalBill(a, b, c, d, e);
         double discount = total * 0.20;
         return total - discount;
     }
 
     public static void main(String[] args) {
-        ShoppingBillCalculator bill = new ShoppingBillCalculator();
+        double a = 100;
+        double b = 100;
+        double c = 100;
+        double d = 100;
+        double e = 100;
 
-        System.out.println("Electronics GST: " + bill.calculateElectronicsGST(100, 100));
-        System.out.println("Fashion GST: " + bill.calculateFashionGST(100, 100));
-        System.out.println("Food GST: " + bill.calculateFoodGST(100));
-        System.out.println("Total Bill: " + bill.totalBill(100, 100, 100, 100, 100));
-        System.out.println("Discounted Final Bill: " + bill.calculateDiscountedBill(100, 100, 100, 100, 100));
+        System.out.println("Electronics GST: " + calculateElectronicsGST(a, b));
+        System.out.println("Fashion GST: " + calculateFashionGST(c, d));
+        System.out.println("Food GST: " + calculateFoodGST(e));
+        System.out.println("Total Bill: " + totalBill(a, b, c, d, e));
+        System.out.println("Final Payable Amount: " + calculateDiscountedBill(a, b, c, d, e));
     }
 }
